@@ -47,11 +47,11 @@ namespace TDA.Kata.Lib.Handlers
                 if (product == null)
                     throw new UnknownProductException();
 
-                var unitaryTax = Math.Round(product.Price / 100 * product.Category.TaxPercentage, 2);
-                var taxAmount = Math.Round(unitaryTax * item.Quantity);
+                var unitaryTax = Math.Round(product.Price / 100 * product.Category.TaxPercentage, 2, MidpointRounding.AwayFromZero);
+                var taxAmount = Math.Round(unitaryTax * item.Quantity, 2, MidpointRounding.AwayFromZero);
 
                 var unitaryTaxedAmount = product.Price + unitaryTax;
-                var taxedAmount = Math.Round(unitaryTaxedAmount * item.Quantity);
+                var taxedAmount = Math.Round(unitaryTaxedAmount * item.Quantity, 2, MidpointRounding.AwayFromZero);
 
                 var orderItem = new OrderItem
                 {
