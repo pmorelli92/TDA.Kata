@@ -8,7 +8,7 @@ namespace TDA.Kata.Test.Facade
     public class InMemOrderRepository : IOrderRepository
     {
         private Order _lastSavedOrder;
-        private List<Order> _orders = new List<Order>();
+        private readonly List<Order> _orders = new List<Order>();
 
         internal Order getLastSavedOrder()
             => _lastSavedOrder;
@@ -21,5 +21,8 @@ namespace TDA.Kata.Test.Facade
             _lastSavedOrder = order;
             _orders.Add(order);
         }
+
+        public void AddOrder(Order order) 
+            => _orders.Add(order);
     }
 }
